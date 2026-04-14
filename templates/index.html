@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<head>
+    <title>Hate Speech Detector</title>
+</head>
+<body>
+    <h1>Hate Speech Detection</h1>
+
+    <form method="POST">
+        <textarea name="text" rows="5" cols="50"></textarea><br>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if prediction %}
+        <h2>Result: {{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>
