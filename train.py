@@ -12,6 +12,10 @@ df = pd.read_csv("dataset.csv") #loads the dataset
 texts = [clean_text(t) for t in df['text'].tolist()] #used to clean the dataset
 labels = df['label'].tolist()
 
+#slicing lists to train faster
+texts = texts[:2500]
+labels = labels[:2500]
+
 train_texts, val_texts, train_labels, val_labels = train_test_split(
     texts, labels, test_size=0.1
 )
@@ -49,7 +53,7 @@ for epoch in range(4):
 
     for i, batch in enumerate(loader):
         if i % 50 == 0:
-            print(f"Step {i}")   # 👈 ADD THIS
+            print(f"Step {i}")
 
         optimizer.zero_grad()
         outputs = model(**batch)

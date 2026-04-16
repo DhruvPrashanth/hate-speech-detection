@@ -5,7 +5,8 @@
     <title>Hate Speech Detector</title>
 </head>
 <body>
-    <h1>Hate Speech Detection</h1>
+    <h1>Hate Speech Detection using LSTM</h1>
+     <h2>CS2228 - Deep Learning CIE-3 Project</h2>
 
     <form method="POST">
         <textarea name="text" rows="5" cols="50"></textarea><br>
@@ -14,6 +15,13 @@
 
     {% if prediction %}
         <h2>Result: {{ prediction }}</h2>
+
+        {% if probabilities %}
+            <h3>Confidence:</h3>
+            <p>Hate Speech: {{ probabilities["Hate Speech"] }}%</p>
+            <p>Offensive: {{ probabilities["Offensive"] }}%</p>
+            <p>Neutral: {{ probabilities["Neutral"] }}%</p>
+        {% endif %}
     {% endif %}
 </body>
 </html>

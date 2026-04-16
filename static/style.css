@@ -1,7 +1,7 @@
 body {
     font-family: Arial;
     background: #121212;
-    color: white;
+    color: #FFFFFF;
     text-align: center;
 }
 
@@ -9,16 +9,18 @@ textarea {
     width: 60%;
     padding: 10px;
     margin: 10px;
+    border-radius: 25px;
 }
 
 button {
     padding: 10px 20px;
-    background: #00adb5;
-    border: none;
-    color: white;
+    background: #008000;
+    border: #000000;
+    color: #FFFFFF;
     cursor: pointer;
+    border-radius: 50px;
 }
 
 h1 {
-    color: #00adb5;
+    color: #EBEBEB;
 }
