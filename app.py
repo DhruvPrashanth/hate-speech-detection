@@ -3,7 +3,6 @@ import torch
 from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
 from utils import clean_text
 
-
 app = Flask(__name__)
 
 model = DistilBertForSequenceClassification.from_pretrained("model/")

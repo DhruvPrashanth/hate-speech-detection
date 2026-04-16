@@ -4,3 +4,4 @@ __pycache__/
 randomtest.py
 *.code-workspace
 model/
+model_bert/

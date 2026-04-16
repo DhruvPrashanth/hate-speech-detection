@@ -1,5 +1,5 @@
 import torch
-from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
+from transformers import BertTokenizer, BertForSequenceClassification
 from torch.utils.data import Dataset, DataLoader
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -32,7 +32,7 @@ train_texts, val_texts, train_labels, val_labels = train_test_split(
     texts, labels, test_size=0.1, stratify=labels
 )
 
-tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
 class HateDataset(Dataset):
     def __init__(self, texts, labels):
@@ -49,8 +49,8 @@ class HateDataset(Dataset):
 
 train_dataset = HateDataset(train_texts, train_labels)
 
-model = DistilBertForSequenceClassification.from_pretrained(
-    'distilbert-base-uncased',
+model = BertForSequenceClassification.from_pretrained(
+    'bert-base-uncased',
     num_labels=3
 )
 
@@ -79,8 +79,8 @@ for epoch in range(4):
 
     print(f"Epoch {epoch} done")
 
-model.save_pretrained("model/")
-tokenizer.save_pretrained("model/")
+model.save_pretrained("model_bert/")
+tokenizer.save_pretrained("model_bert/")
 
 model.eval()
 
@@ -104,6 +104,7 @@ print(classification_report(all_labels, all_preds))
 print("\nConfusion Matrix:")
 print(confusion_matrix(all_labels, all_preds))
 
+
 cm = confusion_matrix(all_labels, all_preds)
 
 plt.figure()
@@ -112,5 +113,5 @@ sns.heatmap(cm, annot=True, fmt="d",
             yticklabels=["Hate", "Offensive", "Neutral"])
 plt.xlabel("Predicted")
 plt.ylabel("Actual")
-plt.title("Confusion Matrix - DistilBERT")
+plt.title("Confusion Matrix - BERT")
 plt.show()
